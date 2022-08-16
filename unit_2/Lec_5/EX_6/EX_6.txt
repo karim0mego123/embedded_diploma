@@ -1,0 +1,11 @@
+size of union = largest size of its members
+char a[32] ; size is 32 byte 
+float x ;    size is 4  byte 
+int   y ;    size is 4  byte
+so size of union = 32 
+size of struct = sum of size of its members 
+char a[32] ; size is 32 byte 
+float x ;    size is 4  byte 
+int   y ;    size is 4  byte
+
+so size of struct = 32 + 4 + 4 = 40 
