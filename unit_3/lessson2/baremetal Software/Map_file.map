@@ -59,10 +59,10 @@ Linker script and memory map
  .bss           0x00010140        0x0 uart.o
                 0x00011140                . = (. + 0x1000)
                 0x00011140                stack_top = .
-LOAD startup.o
 LOAD main.o
 LOAD uart.o
-OUTPUT(learn-in-depth.elf elf32-littlearm)
+LOAD startup.o
+OUTPUT(.elf elf32-littlearm)
 
 .ARM.attributes
                 0x00000000       0x2e
@@ -83,10 +83,10 @@ OUTPUT(learn-in-depth.elf elf32-littlearm)
  .debug_line    0x0000003a       0x36 main.o
  .debug_line    0x00000070       0x82 uart.o
 
-.debug_info     0x00000000      0x1db
- .debug_info    0x00000000       0x5c startup.o
- .debug_info    0x0000005c       0xc9 main.o
- .debug_info    0x00000125       0xb6 uart.o
+.debug_info     0x00000000      0x225
+ .debug_info    0x00000000       0xa6 startup.o
+ .debug_info    0x000000a6       0xc9 main.o
+ .debug_info    0x0000016f       0xb6 uart.o
 
 .debug_abbrev   0x00000000       0xf0
  .debug_abbrev  0x00000000       0x14 startup.o
@@ -105,11 +105,11 @@ OUTPUT(learn-in-depth.elf elf32-littlearm)
  .debug_loc     0x00000000       0x2c main.o
  .debug_loc     0x0000002c       0x2c uart.o
 
-.debug_str      0x00000000       0xc4
- .debug_str     0x00000000       0xa6 main.o
-                                 0xdf (size before relaxing)
- .debug_str     0x000000a6       0x1e uart.o
-                                 0xe1 (size before relaxing)
+.debug_str      0x00000000      0x10e
+ .debug_str     0x00000000       0xf0 main.o
+                                0x129 (size before relaxing)
+ .debug_str     0x000000f0       0x1e uart.o
+                                0x12b (size before relaxing)
 
 .debug_frame    0x00000000       0x54
  .debug_frame   0x00000000       0x2c main.o
