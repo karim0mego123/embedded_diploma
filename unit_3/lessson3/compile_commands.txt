@@ -16,24 +16,27 @@ To remove an object file from the library
 ar t libmylib.a : 
 To view the object files in the library 
 ---------------------------------------
-arm-none-eabi-objdump.exe -h main.objdump
-appear all sections of main.o 
- -----------------------------
-arm-none-eabi-objdump.exe -h main.objdump
+arm-none-eabi-objdump.exe -h main.o (OK)
 Display the full content of all sections requested
 --------------------------------------------------
-arm-none-eabi-objdump.exe -D app.o > app.s
+arm-none-eabi-objdump.exe -D app.o > app.s (OK)
 Let us generate the disassembly file from the bin
  -------------------------------------------------
-arm-none-eabi-as.exe -mcpu=arm926ej-s startup.s -o startup.o
+arm-none-eabi-objcopy.exe -O binary learn-in-depth.ld 
+startup.o uart.o main.o (OK)
+learn-in-depth.elf learn-in-depth.bin
+to git binary file 
+------------------
+arm-none-eabi-as.exe -mcpu=arm926ej-s startup.s -o startup.o (OK)
 arm-none-eabi-objdump.exe -h startup.o
 --------------------------------------
-arm-none-eabi-as.exe -mcpu=arm926ej-s  -c -I . -g main.c -o main.o
+arm-none-eabi-gcc.exe -mcpu=arm926ej-s  -c -I . -g main.c -o main.o (OK)
 ------------------------------------------------------------------
-arm-none-eabi-nm.exe app.o
+arm-none-eabi-nm.exe app.o (OK)
 To read the symbols
 -------------------
-arm-none-eabi-ld -T test.ld -Map=output.map app.o uart.o startup.o -O learn-in-depth.elf
+arm-none-eabi-ld -T test.ld -Map=output.map app.o uart.o startup.o -O 
+learn-in-depth.elf (OK)
 Let us now to linking all the objects
 -------------------------------------
 qemu-system-arm -M versatilepb -m 128M -nographic -kernel test.bin
