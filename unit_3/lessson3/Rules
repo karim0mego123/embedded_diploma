@@ -1,0 +1,28 @@
+Create a vector table for your microcontroler 
+vector tables are MCU specific .
+
+write a startup code which initializies .data and .bss section in sram .
+
+call main () .
+first we have to create the vetor table (Exceptions and interreputs in stm32)
+each interreput consume 4 bytes 
+there are 98 word 98 * 4 = 392 Bytes 
+so the vectoer table consumes 392 Bytes in the code memory 
+                                      how to create a vector table 
+vectoer table is collection of addresses
+create an array to hold MSP and address of various handlers here 
+	uint32_t vectoers[] = { store MSP and address of various handlers here } ; 
+this will be an initialed data so it can store in ,data  section but we will make another section to store this data in . 
+instruct the linker not to include the above array in .data section but in a different user defined section 
+
+weak : 
+		Lets programmer to override already defined weak function with the same function name 
+
+Alias : 
+		Lets programmer to give alias name for a function 
+		
+  interreputكده انا بقول للينكر ان هيبقي فيه سيمبول واحد لكل weakو aliasعلي انه interreputاما بعرف
+   سيمبول وبكده انا مش بستهلك الميموري بتاعتي واما بحتاج اهندل interreputبدل ميكون فيه كذا سيمبولحيث ان لكل 
+   ليه في الدرايفر بتاعي وبكده بقي ليه سيمبول غير السيمبول المشترك الي اناimplementation معين بروح اعمل interreput
+   ليه من غير اما يضرب defination لانه كده ممكن اعمل كذاweak ومش هيدي ايرور لان انا عامله interreputعامله لكل 
+    ليه كده مش هيروح للسيمبول المشترك وهيروح للسيمبول الي انا عامله في الدرايفر بتاعي implemenation ويوم اما اعمل 

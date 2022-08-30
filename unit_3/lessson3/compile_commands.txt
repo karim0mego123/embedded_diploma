@@ -1,0 +1,43 @@
+gcc main.c :
+generate the a.out executable // a.exe
+-----------------------------
+gcc main.c -o test
+generate an executable with the name test // test.exe
+-----------------------------------------
+ar rcs libmylib.a file1.o file2.o : 
+To create a static library file
+-------------------------------
+ar r libmylib.a file3.o :
+To add another object file to the library
+-----------------------------------------
+ar d libmylib.a file3.o :
+To remove an object file from the library
+-----------------------------------------
+ar t libmylib.a : 
+To view the object files in the library 
+---------------------------------------
+arm-none-eabi-objdump.exe -h main.objdump
+appear all sections of main.o 
+ -----------------------------
+arm-none-eabi-objdump.exe -h main.objdump
+Display the full content of all sections requested
+--------------------------------------------------
+arm-none-eabi-objdump.exe -D app.o > app.s
+Let us generate the disassembly file from the bin
+ -------------------------------------------------
+arm-none-eabi-as.exe -mcpu=arm926ej-s startup.s -o startup.o
+arm-none-eabi-objdump.exe -h startup.o
+--------------------------------------
+arm-none-eabi-as.exe -mcpu=arm926ej-s  -c -I . -g main.c -o main.o
+------------------------------------------------------------------
+arm-none-eabi-nm.exe app.o
+To read the symbols
+-------------------
+arm-none-eabi-ld -T test.ld -Map=output.map app.o uart.o startup.o -O learn-in-depth.elf
+Let us now to linking all the objects
+-------------------------------------
+qemu-system-arm -M versatilepb -m 128M -nographic -kernel test.bin
+To run the program in the QEMU Simulator
+----------------------------------------
+
+ 
