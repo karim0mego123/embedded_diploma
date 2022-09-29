@@ -6,77 +6,58 @@
  */
 #include "fifo.h"
 #include "stdlib.h"
-fifo_status_t fifo_init ( fifo_buf_t* fifo , element_type* buf , uint32_t lenght )
+fifo_status_t fifo_init ( fifo_buf_t* fifo  )
 {
-	if ( buf == NULL )
-	{
-		printf("init lifo pointer is NULL\n" ) ;
-		exit(1) ;
-	}
-	fifo->base = buf ;
-	fifo->head = buf ;
-	fifo->tail = buf ;
-	fifo->length = lenght ;
+	fifo->base = fifo->item ;
+	fifo->head = fifo->item ;
+	fifo->tail = fifo->item ;
 	fifo->count = 0 ;
 	return fifo_no_error ;
 }
 fifo_status_t fifo_enqueue ( fifo_buf_t* fifo )
 {
 	element_type buf ;
-	if ( !fifo->base || !fifo->head || !fifo->tail )
+	if ( fifo->count == array_size )
 	{
-		printf("init pointer NULL\n") ;
-	}
-	if ( fifo_is_full(fifo) == fifo_full )
-	{
-		printf("fifo is full\n") ;
+		return fifo_full ;
 	}
 	printf("enter element to enqueue = " ) ;
 	fflush (stdin) ; fflush(stdout) ;
-	scanf("%c",&buf) ;
+	scanf("%d",&buf) ;
 	*(fifo->head) = buf ;
 	fifo->count++ ;
-	if ( fifo->head == fifo->base + ( fifo->length * sizeof( element_type ) ) )
+	if ( fifo->head == &fifo->item[array_size-1] )
+	{
 		fifo->head = fifo->base ;
+	}
 	else
 		fifo->head++ ;
 	return fifo_no_error ;
 }
-fifo_status_t fifo_dequeue ( fifo_buf_t* fifo , element_type* buf )
+fifo_status_t fifo_dequeue ( fifo_buf_t* fifo )
 {
-	if ( !fifo->base || !fifo->head || !fifo->tail )
-		return fifo_null ;
 	if ( fifo->count == 0 )
 		return fifo_empty ;
-	*buf = *fifo->tail ;
+	printf("%d\n",*fifo->tail) ;
 	fifo->count-- ;
-	if ( fifo->tail == fifo->base + ( fifo->length * sizeof( element_type) ) )
+	if ( fifo->tail == &fifo->item[array_size-1] )
+	{
 		fifo->tail = fifo->base ;
+	}
 	else
 		fifo->tail++ ;
 	return fifo_no_error ;
 }
-fifo_status_t fifo_is_full ( fifo_buf_t* fifo )
-{
-	if ( !fifo->base || !fifo->head || !fifo->tail )
-		return fifo_null ;
-	if ( fifo->count == fifo->length )
-		return fifo_full ;
-	return fifo_no_error ;
-
-}
-void fifo_print ( fifo_buf_t* fifo , element_type* buf )
+void fifo_print ( fifo_buf_t* fifo  )
 {
 	if ( fifo->count == 0 )
 		printf("fifo is empty\n") ;
 	else
 	{
-		buf = fifo->tail ;
 		printf("==========fifo_print==========\n") ;
 		for ( int i = 0 ; i < fifo->count ; i++ )
 		{
-			printf("%c\n",*buf) ;
-			buf++ ;
+			printf("%d\n",fifo->item[i]) ;
 		}
 	}
 }

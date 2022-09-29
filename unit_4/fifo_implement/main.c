@@ -13,8 +13,7 @@
 int main ()
 {
 	fifo_buf_t fifo_uart ;
-	element_type uart_buffer[array_size] ;
-	if ( fifo_init ( &fifo_uart , uart_buffer , 5 ) == fifo_no_error )
+	if ( fifo_init ( &fifo_uart) == fifo_no_error )
 		printf("fifo init is done\n") ;
 	uint32_t loc_choice ;
 	while( true )
@@ -29,15 +28,15 @@ int main ()
 		switch (loc_choice)
 		{
 		case enqueueStudent :
-			if ( fifo_enqueue( &fifo_uart  ) == fifo_no_error )
-				printf("fifo enqueue is done\n") ;
+			if ( fifo_enqueue( &fifo_uart  ) == fifo_full )
+				printf("fifo is full\n") ;
 			break ;
 		case dequeueStudent :
-			if ( fifo_dequeue ( &fifo_uart , uart_buffer ) == fifo_empty )
+			if ( fifo_dequeue ( &fifo_uart  ) == fifo_empty )
 				printf("lifo is empty\n") ;
 			break ;
 		case print_fifo :
-			fifo_print ( &fifo_uart , uart_buffer ) ;
+			fifo_print ( &fifo_uart ) ;
 					break ;
 			case exit_programm :
 				return fifo_no_error ;
@@ -47,4 +46,3 @@ int main ()
 	}
 	return fifo_no_error ;
 }
-
