@@ -1,0 +1,10 @@
+LCD.c:19:6:LCD_Clear_Screen	8	static
+LCD.c:31:6:LCD_Enable	8	static
+LCD.c:37:6:_delay_ms	24	static
+LCD.c:61:6:LCD_Init	8	static
+LCD.c:171:6:LCD_Wirte_Cmd	16	static
+LCD.c:192:6:Lcd_Write_Char	16	static
+LCD.c:213:6:LCD_Write_String	24	static
+LCD.c:245:6:LCD_GO_TO_INDEX	24	static
+LCD.c:263:6:LCD_Store_Customer_Char	24	static
+LCD.c:289:6:LCD_Display_Customer_Char	16	static
