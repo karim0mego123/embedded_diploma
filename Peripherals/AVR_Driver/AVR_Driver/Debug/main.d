@@ -7,8 +7,10 @@ main.d main.o: .././main.c ../HAL/LCD_Driver/LCD.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../Utilities/..\utilities\Types.h ../Utilities/..\utilities\utils.h \
- ../Utilities/Types.h ../Utilities/utils.h ../HAL/KeyPad_Driver/Keypad.h \
- ../MCAL/EXTI_Driver/EXTI.h
+ ../Utilities/Types.h ../Utilities/utils.h ../MCAL/USART/USART.h \
+ ../MCAL/USART/USART_ConFig.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h
 
 ../HAL/LCD_Driver/LCD.h:
 
@@ -36,6 +38,10 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../Utilities/utils.h:
 
-../HAL/KeyPad_Driver/Keypad.h:
+../MCAL/USART/USART.h:
 
-../MCAL/EXTI_Driver/EXTI.h:
+../MCAL/USART/USART_ConFig.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:

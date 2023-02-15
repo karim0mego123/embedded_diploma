@@ -117,13 +117,52 @@
 #define OCIE1A  4
 #define TICIE1  5
 
+/************************************************************************/
+/*								USART		                             */
+/************************************************************************/
+#define UDR		*(volatile uint8_t *)(0x2C)
+
+#define UCSRA	*(volatile uint8_t *)(0x2B)
+#define MPCM    0
+#define U2X     1
+#define UPE     2
+#define DOR     3
+#define FE      4
+#define UDRE    5
+#define TXC     6
+#define RXC     7
+
+#define UCSRB	*(volatile uint8_t *)(0x2A)
+#define TXB8    0
+#define RXB8    1
+#define UCSZ2   2
+#define TXEN    3
+#define RXEN    4
+#define UDRIE   5
+#define TXCIE   6
+#define RXCIE   7
+
+#define UCSRC	*(volatile uint8_t *)(0x40)
+#define UCPOL   0
+#define UCSZ0   1
+#define UCSZ1   2
+#define USBS    3
+#define UPM0    4
+#define UPM1    5
+#define UMSEL   6
+#define URSEL   7
+
+#define UBRRL	*(volatile uint8_t *)(0x29)
+#define UBRRH	*(volatile uint8_t *)(0x40)
+
+#define MYUBRR(BAUD)	            ((unsigned int)((FSOC/Speed_Mode)/(16*BAUD)-1))
 
 /************************************************************************/
 /*							EXTI_Interrupt                              */
 /***********************************************************************/
 
 #define MCUCSR	*(volatile uint8_t *)(0x54)
-#define ISC2   6	// MCUCSR – MCU Control and Status Register
+#define ISC2   6	// MCUCSR ? MCU Control and Status Register
 
 // ISC11 ISC10 Description
 // 0 0 The low level of INT1 generates an interrupt request.

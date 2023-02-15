@@ -14,3 +14,5 @@ MCAL\DIO_Driver\DIO.c
 
 MCAL\EXTI_Driver\EXTI.c
 
+MCAL\USART\USART.c
+

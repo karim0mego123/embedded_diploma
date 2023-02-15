@@ -40,6 +40,7 @@ SUBDIRS :=  \
 ../MCAL \
 ../MCAL/EXTI_Driver \
 ../MCAL/DIO_Driver \
+../MCAL/USART \
 ../Utilities
 
 
@@ -50,7 +51,8 @@ C_SRCS +=  \
 ../HAL/LCD_Driver/LCD.c \
 ../main.c \
 ../MCAL/DIO_Driver/DIO.c \
-../MCAL/EXTI_Driver/EXTI.c
+../MCAL/EXTI_Driver/EXTI.c \
+../MCAL/USART/USART.c
 
 
 PREPROCESSING_SRCS += 
@@ -65,7 +67,8 @@ HAL/KeyPad_Driver/Keypad.o \
 HAL/LCD_Driver/LCD.o \
 main.o \
 MCAL/DIO_Driver/DIO.o \
-MCAL/EXTI_Driver/EXTI.o
+MCAL/EXTI_Driver/EXTI.o \
+MCAL/USART/USART.o
 
 OBJS_AS_ARGS +=  \
 "HAL/7 segment/7_SEG.o" \
@@ -73,7 +76,8 @@ HAL/KeyPad_Driver/Keypad.o \
 HAL/LCD_Driver/LCD.o \
 main.o \
 MCAL/DIO_Driver/DIO.o \
-MCAL/EXTI_Driver/EXTI.o
+MCAL/EXTI_Driver/EXTI.o \
+MCAL/USART/USART.o
 
 C_DEPS +=  \
 HAL/7\ segment/7_SEG.d \
@@ -81,7 +85,8 @@ HAL/KeyPad_Driver/Keypad.d \
 HAL/LCD_Driver/LCD.d \
 main.d \
 MCAL/DIO_Driver/DIO.d \
-MCAL/EXTI_Driver/EXTI.d
+MCAL/EXTI_Driver/EXTI.d \
+MCAL/USART/USART.d
 
 C_DEPS_AS_ARGS +=  \
 "HAL/7 segment/7_SEG.d" \
@@ -89,7 +94,8 @@ HAL/KeyPad_Driver/Keypad.d \
 HAL/LCD_Driver/LCD.d \
 main.d \
 MCAL/DIO_Driver/DIO.d \
-MCAL/EXTI_Driver/EXTI.d
+MCAL/EXTI_Driver/EXTI.d \
+MCAL/USART/USART.d
 
 OUTPUT_FILE_PATH +=AVR_Driver.elf
 
@@ -108,42 +114,49 @@ LINKER_SCRIPT_DEP+=
 HAL/7\ segment/7_SEG.o: ../HAL/7\ segment/7_SEG.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver" -I"../MCAL/USART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/KeyPad_Driver/Keypad.o: ../HAL/KeyPad_Driver/Keypad.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver" -I"../MCAL/USART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/LCD_Driver/LCD.o: ../HAL/LCD_Driver/LCD.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver" -I"../MCAL/USART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver" -I"../MCAL/USART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/DIO_Driver/DIO.o: ../MCAL/DIO_Driver/DIO.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver" -I"../MCAL/USART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/EXTI_Driver/EXTI.o: ../MCAL/EXTI_Driver/EXTI.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver" -I"../MCAL/USART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/USART/USART.o: ../MCAL/USART/USART.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../HAL/KeyPad_Driver" -I"../HAL/LCD_Driver" -I"../Utilities" -I"../HAL/7 segment" -I"../MCAL/DIO_Driver" -I"../MCAL/EXTI_Driver" -I"../MCAL/USART"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

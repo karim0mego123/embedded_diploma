@@ -104,6 +104,7 @@
       <Value>../HAL/7 segment</Value>
       <Value>../MCAL/DIO_Driver</Value>
       <Value>../MCAL/EXTI_Driver</Value>
+      <Value>../MCAL/USART</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -159,6 +160,15 @@
     <Compile Include="MCAL\EXTI_Driver\EXTI.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\USART\USART.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\USART\USART.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\USART\USART_ConFig.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Utilities\Regesters.h">
       <SubType>compile</SubType>
     </Compile>
@@ -177,6 +187,7 @@
     <Folder Include="MCAL" />
     <Folder Include="MCAL\EXTI_Driver" />
     <Folder Include="MCAL\DIO_Driver" />
+    <Folder Include="MCAL\USART" />
     <Folder Include="Utilities" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

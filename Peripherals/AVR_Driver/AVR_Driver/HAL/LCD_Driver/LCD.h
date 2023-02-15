@@ -14,18 +14,18 @@
 #include "Types.h"
 #include "utils.h"
 
-//#define EIGHT_BIT_MODE
-#define FOUR_BIT_MODE
+#define EIGHT_BIT_MODE
+//#define FOUR_BIT_MODE
 
 #define LCD_DATA			PORTA
 #define	LCD_DATA_DIR		DDRA
 
-#define LCD_CTRL			PORTA
-#define LCD_CTRL_DIR		DDRA
+#define LCD_CTRL			PORTB
+#define LCD_CTRL_DIR		DDRB
 
-#define RS_SWITCH	1
-#define RW_SWITCH	2
-#define EN_SWITCH	3
+#define RS_SWITCH	0
+#define RW_SWITCH	1
+#define EN_SWITCH	2
 
 #define LCD_FUNCTION_8BIT_2LINES   					(0x38)
 #define LCD_FUNCTION_4BIT_2LINES   					(0x28)
@@ -53,7 +53,7 @@ void LCD_Enable ();
 void LCD_Clear_Screen();
 void LCD_Wirte_Cmd (uint8_t Cmd);
 void Lcd_Write_Char(uint8_t Char) ;
-void LCD_Write_String( string STRING , uint8_t ROW , uint8_t COL);
+void LCD_Write_String( uint8_t* STRING , uint8_t ROW , uint8_t COL);
 void LCD_GO_TO_INDEX(uint8_t ROW , uint8_t COL);
 void LCD_Store_Customer_Char(uint8_t* pattern , uint8_t CGram_index );
 void LCD_Display_Customer_Char(uint8_t CGRAM_Index , uint8_t ROW , uint8_t Col ) ;

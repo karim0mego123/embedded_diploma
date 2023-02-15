@@ -6,7 +6,7 @@
  */ 
 
 #include "DIO.h"
-void DIO_Write_Pin_Dir( uint8_t PortNumber , uint8_t PinNumber , uint8_t Direction ) 
+void DIO_Write_Pin_Dir( GPIO_PORT_t PortNumber , GPIO_PIN_t PinNumber , uint8_t Direction ) 
 {
 	switch( PortNumber )
 	{
@@ -68,7 +68,7 @@ void DIO_Write_Pin_Dir( uint8_t PortNumber , uint8_t PinNumber , uint8_t Directi
 		break ;
 	}
 }
-void DIO_Write_Port_Dir( uint8_t PortNumber , uint8_t Direction ) 
+void DIO_Write_Port_Dir( GPIO_PORT_t PortNumber , uint8_t Direction ) 
 {
 	switch(PortNumber)
 	{
@@ -115,7 +115,7 @@ void DIO_Write_Port_Dir( uint8_t PortNumber , uint8_t Direction )
 	}
 }
 
-void DIO_Write_Pin( uint8_t PortNumber , uint8_t PinNumber , uint8_t value  )
+void DIO_Write_Pin( GPIO_PORT_t PortNumber , GPIO_PIN_t PinNumber , uint8_t value  )
 {
 	switch( PortNumber )
 	{
@@ -177,7 +177,7 @@ void DIO_Write_Pin( uint8_t PortNumber , uint8_t PinNumber , uint8_t value  )
 		break ;
 	}
 }
-void DIO_Write_Port( uint8_t PortNumber , uint8_t value  ) 
+void DIO_Write_Port( GPIO_PORT_t PortNumber , uint8_t value  ) 
 {
 	switch(PortNumber)
 	{
@@ -199,7 +199,7 @@ void DIO_Write_Port( uint8_t PortNumber , uint8_t value  )
 	}
 		
 }
-void DIO_Read( uint8_t PortNumber , uint8_t PinNumber , uint8_t* value  )
+void DIO_Read( GPIO_PORT_t PortNumber , GPIO_PIN_t PinNumber , uint8_t* value  )
 {
 	switch(PortNumber)
 	{
@@ -219,7 +219,7 @@ void DIO_Read( uint8_t PortNumber , uint8_t PinNumber , uint8_t* value  )
 	}
 }
 
-void DIO_Toggle_Pin( uint8_t PortNumber , uint8_t PinNumber  )
+void DIO_Toggle_Pin( GPIO_PORT_t PortNumber , GPIO_PIN_t PinNumber  )
 {
 	switch(PortNumber)
 	{
@@ -237,7 +237,7 @@ void DIO_Toggle_Pin( uint8_t PortNumber , uint8_t PinNumber  )
 		break ;
 	}
 }
-void DIO_Toggle_Port( uint8_t PortNumber )
+void DIO_Toggle_Port( GPIO_PORT_t PortNumber )
 {
 	switch(PortNumber)
 	{

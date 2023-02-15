@@ -5,8 +5,9 @@
  *  Author: karim
  */ 
 #include "LCD.h"
-
+#ifdef FOUR_BIT_MODE
 static uint8_t Init_Is_Finshed = 0 ;
+#endif
 /*******************************************************************************************************************
  * 			@Fn							-LCD_Clear_Screen															*
  * 			@brief 						-Function is used to clear screen											*
@@ -151,7 +152,7 @@ void Lcd_Write_Char(uint8_t Char)
  * 			@retval						-NONE																		*
  * 			Note						-NONE																		*
  ********************************************************************************************************************/
-void LCD_Write_String( string STRING , uint8_t ROW , uint8_t COL)
+void LCD_Write_String( uint8_t* STRING , uint8_t ROW , uint8_t COL)
 {
 	LCD_GO_TO_INDEX(ROW,COL);
 	uint8_t index = 0 ;
