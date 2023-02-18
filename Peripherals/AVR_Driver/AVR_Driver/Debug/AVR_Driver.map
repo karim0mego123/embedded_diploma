@@ -5,7 +5,7 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                               HAL/7 segment/7_SEG.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
-                              MCAL/EXTI_Driver/EXTI.o (__do_clear_bss)
+                              HAL/LCD_Driver/LCD.o (__do_clear_bss)
 
 Discarded input sections
 
@@ -26,7 +26,7 @@ Discarded input sections
                 0x00000000       0x28 HAL/7 segment/7_SEG.o
  .debug_ranges  0x00000000       0x18 HAL/7 segment/7_SEG.o
  .debug_line    0x00000000      0x166 HAL/7 segment/7_SEG.o
- .debug_str     0x00000000      0x219 HAL/7 segment/7_SEG.o
+ .debug_str     0x00000000      0x1e3 HAL/7 segment/7_SEG.o
  .comment       0x00000000       0x31 HAL/7 segment/7_SEG.o
  .debug_frame   0x00000000       0x44 HAL/7 segment/7_SEG.o
  .text          0x00000000        0x0 HAL/KeyPad_Driver/Keypad.o
@@ -43,7 +43,7 @@ Discarded input sections
                 0x00000000       0x28 HAL/KeyPad_Driver/Keypad.o
  .debug_ranges  0x00000000       0x18 HAL/KeyPad_Driver/Keypad.o
  .debug_line    0x00000000      0x1cb HAL/KeyPad_Driver/Keypad.o
- .debug_str     0x00000000      0x1e3 HAL/KeyPad_Driver/Keypad.o
+ .debug_str     0x00000000      0x1ad HAL/KeyPad_Driver/Keypad.o
  .comment       0x00000000       0x31 HAL/KeyPad_Driver/Keypad.o
  .debug_frame   0x00000000       0x44 HAL/KeyPad_Driver/Keypad.o
  .text          0x00000000        0x0 HAL/LCD_Driver/LCD.o
@@ -80,13 +80,13 @@ Discarded input sections
                 0x00000000       0x24 MCAL/EXTI_Driver/EXTI.o
  .text.EXTI_TriggerEdge
                 0x00000000       0xc0 MCAL/EXTI_Driver/EXTI.o
- .text          0x00000000        0x0 MCAL/USART/USART.o
- .data          0x00000000        0x0 MCAL/USART/USART.o
- .bss           0x00000000        0x0 MCAL/USART/USART.o
+ .text          0x00000000        0x0 MCAL/USART_Driver/USART.o
+ .data          0x00000000        0x0 MCAL/USART_Driver/USART.o
+ .bss           0x00000000        0x0 MCAL/USART_Driver/USART.o
  .text.USART_Send_Char
-                0x00000000        0xa MCAL/USART/USART.o
+                0x00000000        0xa MCAL/USART_Driver/USART.o
  .text.USAERT_Send_STRING
-                0x00000000       0x22 MCAL/USART/USART.o
+                0x00000000       0x22 MCAL/USART_Driver/USART.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -157,7 +157,7 @@ LOAD HAL/LCD_Driver/LCD.o
 LOAD main.o
 LOAD MCAL/DIO_Driver/DIO.o
 LOAD MCAL/EXTI_Driver/EXTI.o
-LOAD MCAL/USART/USART.o
+LOAD MCAL/USART_Driver/USART.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -267,7 +267,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x57c
+.text           0x00000000      0x612
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
                 0x00000000                __vector_default
@@ -350,54 +350,54 @@ END GROUP
                 0x00000092       0x22 HAL/LCD_Driver/LCD.o
                 0x00000092                LCD_Enable
  .text.LCD_Wirte_Cmd
-                0x000000b4       0x2e HAL/LCD_Driver/LCD.o
+                0x000000b4       0x58 HAL/LCD_Driver/LCD.o
                 0x000000b4                LCD_Wirte_Cmd
  .text.LCD_Clear_Screen
-                0x000000e2        0x8 HAL/LCD_Driver/LCD.o
-                0x000000e2                LCD_Clear_Screen
+                0x0000010c        0x8 HAL/LCD_Driver/LCD.o
+                0x0000010c                LCD_Clear_Screen
  .text.LCD_Init
-                0x000000ea       0x44 HAL/LCD_Driver/LCD.o
-                0x000000ea                LCD_Init
+                0x00000114       0x92 HAL/LCD_Driver/LCD.o
+                0x00000114                LCD_Init
  .text.Lcd_Write_Char
-                0x0000012e       0x2e HAL/LCD_Driver/LCD.o
-                0x0000012e                Lcd_Write_Char
+                0x000001a6       0x44 HAL/LCD_Driver/LCD.o
+                0x000001a6                Lcd_Write_Char
  .text.LCD_GO_TO_INDEX
-                0x0000015c       0x1a HAL/LCD_Driver/LCD.o
-                0x0000015c                LCD_GO_TO_INDEX
+                0x000001ea       0x1a HAL/LCD_Driver/LCD.o
+                0x000001ea                LCD_GO_TO_INDEX
  .text.LCD_Write_String
-                0x00000176       0x8a HAL/LCD_Driver/LCD.o
-                0x00000176                LCD_Write_String
- .text.main     0x00000200       0x4a main.o
-                0x00000200                main
+                0x00000204       0x8a HAL/LCD_Driver/LCD.o
+                0x00000204                LCD_Write_String
+ .text.main     0x0000028e       0x4a main.o
+                0x0000028e                main
  .text.DIO_Write_Pin_Dir
-                0x0000024a       0xea MCAL/DIO_Driver/DIO.o
-                0x0000024a                DIO_Write_Pin_Dir
+                0x000002d8       0xea MCAL/DIO_Driver/DIO.o
+                0x000002d8                DIO_Write_Pin_Dir
  .text.DIO_Write_Pin
-                0x00000334       0xea MCAL/DIO_Driver/DIO.o
-                0x00000334                DIO_Write_Pin
+                0x000003c2       0xea MCAL/DIO_Driver/DIO.o
+                0x000003c2                DIO_Write_Pin
  .text.__vector_1
-                0x0000041e       0x52 MCAL/EXTI_Driver/EXTI.o
-                0x0000041e                __vector_1
+                0x000004ac       0x52 MCAL/EXTI_Driver/EXTI.o
+                0x000004ac                __vector_1
  .text.__vector_2
-                0x00000470       0x52 MCAL/EXTI_Driver/EXTI.o
-                0x00000470                __vector_2
+                0x000004fe       0x52 MCAL/EXTI_Driver/EXTI.o
+                0x000004fe                __vector_2
  .text.__vector_3
-                0x000004c2       0x52 MCAL/EXTI_Driver/EXTI.o
-                0x000004c2                __vector_3
+                0x00000550       0x52 MCAL/EXTI_Driver/EXTI.o
+                0x00000550                __vector_3
  .text.USART_Init
-                0x00000514       0x1c MCAL/USART/USART.o
-                0x00000514                USART_Init
+                0x000005a2       0x24 MCAL/USART_Driver/USART.o
+                0x000005a2                USART_Init
  .text.USART_Recieve_Char
-                0x00000530       0x16 MCAL/USART/USART.o
-                0x00000530                USART_Recieve_Char
+                0x000005c6       0x16 MCAL/USART_Driver/USART.o
+                0x000005c6                USART_Recieve_Char
  .text.USAERT_Recieve_STRING
-                0x00000546       0x32 MCAL/USART/USART.o
-                0x00000546                USAERT_Recieve_STRING
-                0x00000578                . = ALIGN (0x2)
+                0x000005dc       0x32 MCAL/USART_Driver/USART.o
+                0x000005dc                USAERT_Recieve_STRING
+                0x0000060e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000578        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000578                _exit
-                0x00000578                exit
+ .fini9         0x0000060e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000060e                _exit
+                0x0000060e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -416,11 +416,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000578        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000060e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000057c                _etext = .
+                0x00000612                _etext = .
 
-.data           0x00800060        0x0 load address 0x0000057c
+.data           0x00800060        0x0 load address 0x00000612
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -432,26 +432,28 @@ END GROUP
                 0x00800060                _edata = .
                 0x00800060                PROVIDE (__data_end, .)
 
-.bss            0x00800060        0x6
+.bss            0x00800060        0x7
                 0x00800060                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
+ .bss.Init_Is_Finshed
+                0x00800060        0x1 HAL/LCD_Driver/LCD.o
  .bss.INT2_Fptr
-                0x00800060        0x2 MCAL/EXTI_Driver/EXTI.o
+                0x00800061        0x2 MCAL/EXTI_Driver/EXTI.o
  .bss.INT1_Fptr
-                0x00800062        0x2 MCAL/EXTI_Driver/EXTI.o
+                0x00800063        0x2 MCAL/EXTI_Driver/EXTI.o
  .bss.INT0_Fptr
-                0x00800064        0x2 MCAL/EXTI_Driver/EXTI.o
+                0x00800065        0x2 MCAL/EXTI_Driver/EXTI.o
  *(COMMON)
-                0x00800066                PROVIDE (__bss_end, .)
-                0x0000057c                __data_load_start = LOADADDR (.data)
-                0x0000057c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800067                PROVIDE (__bss_end, .)
+                0x00000612                __data_load_start = LOADADDR (.data)
+                0x00000612                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800066        0x0
+.noinit         0x00800067        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800066                _end = .
+                0x00800067                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -498,7 +500,7 @@ END GROUP
  .comment       0x00000030       0x31 main.o
  .comment       0x00000030       0x31 MCAL/DIO_Driver/DIO.o
  .comment       0x00000030       0x31 MCAL/EXTI_Driver/EXTI.o
- .comment       0x00000030       0x31 MCAL/USART/USART.o
+ .comment       0x00000030       0x31 MCAL/USART_Driver/USART.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c
@@ -531,37 +533,37 @@ END GROUP
  .debug_aranges
                 0x000000d0       0x50 MCAL/EXTI_Driver/EXTI.o
  .debug_aranges
-                0x00000120       0x40 MCAL/USART/USART.o
+                0x00000120       0x40 MCAL/USART_Driver/USART.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1317
+.debug_info     0x00000000     0x1457
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_info    0x000004e6      0x5d6 HAL/LCD_Driver/LCD.o
- .debug_info    0x00000abc      0x1f3 main.o
- .debug_info    0x00000caf      0x285 MCAL/DIO_Driver/DIO.o
- .debug_info    0x00000f34      0x209 MCAL/EXTI_Driver/EXTI.o
- .debug_info    0x0000113d      0x1da MCAL/USART/USART.o
+ .debug_info    0x000004e6      0x752 HAL/LCD_Driver/LCD.o
+ .debug_info    0x00000c38      0x1b6 main.o
+ .debug_info    0x00000dee      0x285 MCAL/DIO_Driver/DIO.o
+ .debug_info    0x00001073      0x209 MCAL/EXTI_Driver/EXTI.o
+ .debug_info    0x0000127c      0x1db MCAL/USART_Driver/USART.o
 
-.debug_abbrev   0x00000000      0x976
+.debug_abbrev   0x00000000      0x994
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_abbrev  0x000004a3      0x17c HAL/LCD_Driver/LCD.o
- .debug_abbrev  0x0000061f       0xc7 main.o
- .debug_abbrev  0x000006e6       0xaa MCAL/DIO_Driver/DIO.o
- .debug_abbrev  0x00000790       0xc0 MCAL/EXTI_Driver/EXTI.o
- .debug_abbrev  0x00000850      0x126 MCAL/USART/USART.o
+ .debug_abbrev  0x000004a3      0x18b HAL/LCD_Driver/LCD.o
+ .debug_abbrev  0x0000062e       0xc7 main.o
+ .debug_abbrev  0x000006f5       0xaa MCAL/DIO_Driver/DIO.o
+ .debug_abbrev  0x0000079f       0xc0 MCAL/EXTI_Driver/EXTI.o
+ .debug_abbrev  0x0000085f      0x135 MCAL/USART_Driver/USART.o
 
-.debug_line     0x00000000      0xc70
+.debug_line     0x00000000      0xcfc
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_line    0x00000116      0x359 HAL/LCD_Driver/LCD.o
- .debug_line    0x0000046f      0x121 main.o
- .debug_line    0x00000590      0x2f1 MCAL/DIO_Driver/DIO.o
- .debug_line    0x00000881      0x27f MCAL/EXTI_Driver/EXTI.o
- .debug_line    0x00000b00      0x170 MCAL/USART/USART.o
+ .debug_line    0x00000116      0x3d1 HAL/LCD_Driver/LCD.o
+ .debug_line    0x000004e7      0x128 main.o
+ .debug_line    0x0000060f      0x2f1 MCAL/DIO_Driver/DIO.o
+ .debug_line    0x00000900      0x27f MCAL/EXTI_Driver/EXTI.o
+ .debug_line    0x00000b7f      0x17d MCAL/USART_Driver/USART.o
 
 .debug_frame    0x00000000      0x380
  *(.debug_frame)
@@ -569,29 +571,29 @@ END GROUP
  .debug_frame   0x000000ec       0x34 main.o
  .debug_frame   0x00000120       0x84 MCAL/DIO_Driver/DIO.o
  .debug_frame   0x000001a4      0x15c MCAL/EXTI_Driver/EXTI.o
- .debug_frame   0x00000300       0x80 MCAL/USART/USART.o
+ .debug_frame   0x00000300       0x80 MCAL/USART_Driver/USART.o
 
-.debug_str      0x00000000      0x78c
+.debug_str      0x00000000      0x76d
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_str     0x00000196      0x2ae HAL/LCD_Driver/LCD.o
-                                0x2f4 (size before relaxing)
- .debug_str     0x00000444       0xac main.o
-                                0x286 (size before relaxing)
- .debug_str     0x000004f0       0x9f MCAL/DIO_Driver/DIO.o
-                                0x2c6 (size before relaxing)
- .debug_str     0x0000058f      0x11d MCAL/EXTI_Driver/EXTI.o
-                                0x2b5 (size before relaxing)
- .debug_str     0x000006ac       0xe0 MCAL/USART/USART.o
-                                0x27c (size before relaxing)
+ .debug_str     0x00000196      0x288 HAL/LCD_Driver/LCD.o
+                                0x2ce (size before relaxing)
+ .debug_str     0x0000041e       0x54 main.o
+                                0x1f8 (size before relaxing)
+ .debug_str     0x00000472       0xf7 MCAL/DIO_Driver/DIO.o
+                                0x290 (size before relaxing)
+ .debug_str     0x00000569      0x11d MCAL/EXTI_Driver/EXTI.o
+                                0x27f (size before relaxing)
+ .debug_str     0x00000686       0xe7 MCAL/USART_Driver/USART.o
+                                0x24d (size before relaxing)
 
-.debug_loc      0x00000000      0xeaf
+.debug_loc      0x00000000      0xfc7
  *(.debug_loc)
- .debug_loc     0x00000000      0x543 HAL/LCD_Driver/LCD.o
- .debug_loc     0x00000543       0x47 main.o
- .debug_loc     0x0000058a      0x35b MCAL/DIO_Driver/DIO.o
- .debug_loc     0x000008e5      0x422 MCAL/EXTI_Driver/EXTI.o
- .debug_loc     0x00000d07      0x1a8 MCAL/USART/USART.o
+ .debug_loc     0x00000000      0x65b HAL/LCD_Driver/LCD.o
+ .debug_loc     0x0000065b       0x47 main.o
+ .debug_loc     0x000006a2      0x35b MCAL/DIO_Driver/DIO.o
+ .debug_loc     0x000009fd      0x422 MCAL/EXTI_Driver/EXTI.o
+ .debug_loc     0x00000e1f      0x1a8 MCAL/USART_Driver/USART.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -617,7 +619,7 @@ END GROUP
  .debug_ranges  0x00000050       0x10 main.o
  .debug_ranges  0x00000060       0x40 MCAL/DIO_Driver/DIO.o
  .debug_ranges  0x000000a0       0x40 MCAL/EXTI_Driver/EXTI.o
- .debug_ranges  0x000000e0       0x30 MCAL/USART/USART.o
+ .debug_ranges  0x000000e0       0x30 MCAL/USART_Driver/USART.o
 
 .debug_macro
  *(.debug_macro)

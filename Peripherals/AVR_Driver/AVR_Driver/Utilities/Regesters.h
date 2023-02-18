@@ -162,7 +162,7 @@
 /***********************************************************************/
 
 #define MCUCSR	*(volatile uint8_t *)(0x54)
-#define ISC2   6	// MCUCSR ? MCU Control and Status Register
+#define ISC2   6	// MCUCSR � MCU Control and Status Register
 
 // ISC11 ISC10 Description
 // 0 0 The low level of INT1 generates an interrupt request.

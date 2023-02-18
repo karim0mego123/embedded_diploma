@@ -13,9 +13,9 @@
 #define Asynchronous        1
 #define UART_Clock          Asynchronous
 
-#define Normal_Speed        2
-#define Double_Speed        1
-#define Speed_Mode          Double_Speed 
+#define Normal_Speed        1
+#define Double_Speed        2
+#define Speed_Mode          Normal_Speed 
 
 #define TransMetter         0 
 #define REciever            1
@@ -37,7 +37,7 @@
 #define STOP_State          One_Bit
 
 #define FSOC	            8000000L // CLOCK SPEED
-#define BAUD	            4800L
+#define BAUD	            9600
 
 
 

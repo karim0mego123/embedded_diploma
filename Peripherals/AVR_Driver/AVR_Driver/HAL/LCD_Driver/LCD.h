@@ -14,8 +14,8 @@
 #include "Types.h"
 #include "utils.h"
 
-#define EIGHT_BIT_MODE
-//#define FOUR_BIT_MODE
+//#define EIGHT_BIT_MODE
+#define FOUR_BIT_MODE
 
 #define LCD_DATA			PORTA
 #define	LCD_DATA_DIR		DDRA

@@ -18,7 +18,7 @@
 #define SET_BIT(Reg,bit) Reg|=(1<<bit)
 #define CLEAR_BIT(Reg,bit) Reg=(Reg&(~(1<<bit)))
 #define TOOGLE_BIT(Reg,bit) Reg^=(1<<bit)
-#define CHECK_BIT(Reg,bit) (( (Reg)>>(bit) )& 0x01)
+#define Read_Bit(Reg,bit) (( (Reg)>>(bit) )& 1)
 
 
 
