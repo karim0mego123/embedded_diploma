@@ -23,11 +23,8 @@
 
 #include "stm32f103xx.h"
 #include "GPIO.h"
-#include "EXTI.h"
 #include "LCD.h"
-#include "Keypad.h"
-
-uint8_t IRQ_Flag = 0 ;
+#include "UART.h"
 
 void Clock_Init()
 {
@@ -35,34 +32,27 @@ void Clock_Init()
 	RCC_GPIOB_CLK_EN();
 	RCC_AFIO_CLK_EN();
 }
-void EXTI9_CallBack()
-{
-	IRQ_Flag=1 ;
-	LCD_Write_String((uint8_t*)"IRQ EXTI9 Is Happened -\\ ", 0, 0) ;
-	_delay_ms(1000);
-}
 int main(void)
 {
+	uint8_t string[30] = "Learn In Depth   " ;
+	USART_Conig_t USART_ConFig ;
 	Clock_Init();
 
-	LCD_Init();
-	LCD_Clear_Screen();
-	EXTI_PinConfig_t EXTI_ConFig ;
+	USART_ConFig.BaudRate= USART_BaudRate_9600;
+	USART_ConFig.HWFlowCtl=USART_HWFlowCtl_NONE;
+	USART_ConFig.IRQ_Enable=USART_IRQ_Enable_NONE;
+	USART_ConFig.P_IRQ_CallBack = NULL ;
+	USART_ConFig.Parity = USART_Parity_NONE ;
+	USART_ConFig.PayLoad_Length=USART_PayLoad_Length8B;
+	USART_ConFig.StopBits=USART_StopBits_One ;
+	USART_ConFig.USART_MODE=USART_MODE_TX_RX ;
 
-	EXTI_ConFig.EXTI_PIN=EXTI9PB9 ;
-	EXTI_ConFig.Trigger_Case = EXTI_Trigger_Rising ;
-	EXTI_ConFig.P_IRQ_CallBak=EXTI9_CallBack ;
-	EXTI_ConFig.IRQ_EN = EXTI_IRQ_Enable ;
-	MCAL_EXTI_GPIO_Init(&EXTI_ConFig);
-	IRQ_Flag = 1;
+	MCAL_USART_Init(USART1,&USART_ConFig);
+	MCAL_USART_GPIO_Set_Pins(USART1);
 	while(1)
 	{
-		if(IRQ_Flag)
-		{
-			LCD_Clear_Screen();
-			IRQ_Flag = 0 ;
-		}
+		MCAL_USART_Send_String(USART1, string, Enable);
+		_delay_ms(250) ;
 	}
-
 }
 

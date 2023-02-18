@@ -6,3 +6,5 @@
 "Startup/startup_stm32f103c6tx.o"
 "stm32f103c6_Drivers/EXTI.o"
 "stm32f103c6_Drivers/GPIO.o"
+"stm32f103c6_Drivers/RCC.o"
+"stm32f103c6_Drivers/UART.o"

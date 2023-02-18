@@ -39,6 +39,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 drivers.list \
 
+OBJCOPY_HEX += \
+drivers.hex \
+
 OBJCOPY_BIN += \
 drivers.bin \
 
@@ -47,8 +50,8 @@ drivers.bin \
 all: drivers.elf secondary-outputs
 
 # Tool invocations
-drivers.elf: $(OBJS) $(USER_OBJS) C:\Users\karim\Desktop\STM_WorkSpace\drivers\STM32F103C6TX_FLASH.ld
-	arm-none-eabi-gcc -gdwarf-2 -o "drivers.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\karim\Desktop\STM_WorkSpace\drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+drivers.elf: $(OBJS) $(USER_OBJS) C:\Users\karim\Desktop\Embedded_system_diploma\embedded_diploma\embedded_diploma\Peripherals\drivers\STM32F103C6TX_FLASH.ld
+	arm-none-eabi-gcc -gdwarf-2 -o "drivers.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\karim\Desktop\Embedded_system_diploma\embedded_diploma\embedded_diploma\Peripherals\drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -62,6 +65,11 @@ drivers.list: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+drivers.hex: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "drivers.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 drivers.bin: $(EXECUTABLES)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "drivers.bin"
 	@echo 'Finished building: $@'
@@ -72,7 +80,7 @@ clean:
 	-$(RM) *
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 .PHONY: all clean dependents
 .SECONDARY:

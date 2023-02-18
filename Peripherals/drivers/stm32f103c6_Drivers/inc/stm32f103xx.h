@@ -8,25 +8,25 @@
 #ifndef INC_STM32F103XX_H_
 #define INC_STM32F103XX_H_
 /****************************************************************************************
-*					    	 																								  		*
-*														Includes													 	  		*
-*																															  		*
-*****************************************************************************************/
+ *					    	 																								  		*
+ *														Includes													 	  		*
+ *																															  		*
+ *****************************************************************************************/
 
 #include "stdint.h"
 #include "stdlib.h"
 
 /****************************************************************************************
-*																																	  *
-*													Base addresses for Memories								  *
-*																																	  *
-*****************************************************************************************/
+ *																																	  *
+ *													Base addresses for Memories								  *
+ *																																	  *
+ *****************************************************************************************/
 
 #define FLASH_Memory_Base											0x08000000UL
 #define System_Memory_Base											0x1FFFF000UL
 #define SRAM_Memory_Base											0x20000000UL
-#define Peripherals_Base													0x40000000UL
-#define CORTEXM3_Internal_Peripherals_Base					0xE0000000UL
+#define Peripherals_Base											0x40000000UL
+#define CORTEXM3_Internal_Peripherals_Base							0xE0000000UL
 
 
 
@@ -60,12 +60,22 @@
 #define GPIOE_BASE					0x40011800UL
 #define AFIO_BASE					0x40010000UL
 #define EXTI_BASE					0x40010400UL
+#define USART1_BASE					0x40013800UL
+
+/******************************************************************************************
+ *																																       *
+ *													Base addresses for APP1_Peripherals					 	   *
+ *																																	   *
+ *****************************************************************************************/
+
+#define USART2_BASE					0x40004400UL
+#define USART3_BASE					0x40004800UL
 
 /****************************************************************************************
-*																																	  *
-*													Peripheral register:													  *
-*																																	  *
-*****************************************************************************************/
+ *																																	  *
+ *													Peripheral register:													  *
+ *																																	  *
+ *****************************************************************************************/
 
 // Peripheral register : GPIO
 
@@ -85,7 +95,7 @@ typedef struct {
 	volatile uint32_t	EVCR ;
 	volatile uint32_t	MAPR;
 	volatile uint32_t	EXTICR[4] ;
-			 uint32_t	RESERVED0 ;
+	uint32_t	RESERVED0 ;
 	volatile uint32_t	MAPR2 ;
 }AFIO_Typedef ;
 
@@ -117,6 +127,18 @@ typedef struct {
 	volatile uint32_t	PR ;
 }EXTI_Typedef ;
 
+// Peripheral register : UART
+
+typedef struct {
+	volatile uint32_t	SR ;
+	volatile uint32_t	DR;
+	volatile uint32_t	BRR ;
+	volatile uint32_t	CR1 ;
+	volatile uint32_t	CR2 ;
+	volatile uint32_t	CR3 ;
+	volatile uint32_t	GTPR ;
+}USART_Typedef ;
+
 //Peripheral Instants:
 
 #define GPIOA							((GPIO_Typedef *)GPIOA_BASE)
@@ -129,19 +151,33 @@ typedef struct {
 #define EXTI							((EXTI_Typedef	*)EXTI_BASE)
 #define AFIO							((AFIO_Typedef	*)AFIO_BASE)
 
+#define USART1							((USART_Typedef	*)USART1_BASE)
+#define USART2							((USART_Typedef	*)USART2_BASE)
+#define USART3							((USART_Typedef	*)USART3_BASE)
+
 
 /****************************************************************************************
-*																																	*
-*													clock enable Macros:												*
-*																														       		*
-*****************************************************************************************/
+ *																																	*
+ *													clock enable Macros:												*
+ *																														       		*
+ *****************************************************************************************/
 
 #define RCC_GPIOA_CLK_EN()			(RCC->APB2ENR |= (1<<2)) ;
 #define RCC_GPIOB_CLK_EN()			(RCC->APB2ENR |= (1<<3)) ;
 #define RCC_GPIOC_CLK_EN()			(RCC->APB2ENR |= (1<<4)) ;
 #define RCC_GPIOD_CLK_EN()			(RCC->APB2ENR |= (1<<5)) ;
 #define RCC_GPIOE_CLK_EN()			(RCC->APB2ENR |= (1<<6)) ;
-#define RCC_AFIO_CLK_EN()				(RCC->APB2ENR |= (1<<0)) ;
+#define RCC_AFIO_CLK_EN()			(RCC->APB2ENR |= (1<<0)) ;
+
+// Clock Enable USART
+#define RCC_USART1_CLK_EN()			(RCC->APB2ENR |= (1<<14)) ;
+#define RCC_USART2_CLK_EN()			(RCC->APB1ENR |= (1<<17)) ;
+#define RCC_USART3_CLK_EN()			(RCC->APB1ENR |= (1<<18)) ;
+
+// RCC RESET mechanism
+#define RCC_USART1_Reset()			(RCC->APB2RSTR |= (1<<14)) ;
+#define RCC_USART2_Reset()			(RCC->APB1RSTR |= (1<<17)) ;
+#define RCC_USART3_Reset()			(RCC->APB1RSTR |= (1<<18)) ;
 
 // EXTI
 #define EXTI0						0
@@ -177,9 +213,13 @@ typedef struct {
 #define EXTI10_IRQ						40
 #define EXTI11_IRQ						40
 #define EXTI12_IRQ						40
-#define EXTI13_IRQ						40
+#define EXTI13_IRQ
 #define EXTI14_IRQ						40
 #define EXTI15_IRQ						40
+
+#define USART1_IRQ						37
+#define USART2_IRQ						38
+#define USART3_IRQ						39
 
 /*********************************************
  *  NVIC IRQ Enable Disable Macros			 *
@@ -195,6 +235,10 @@ typedef struct {
 #define NVIC_IRQ23_EXTI5_9_Enable 			(NVIC_ISER0 |= 1<<23)
 #define NVIC_IRQ40_EXTI10_15_Enable 		(NVIC_ISER1 |= 1<<8)
 
+#define NVIC_IRQ37_USART1_Enable 			(NVIC_ISER1 |= 1<<(USART1_IRQ-32))
+#define NVIC_IRQ38_USART2_Enable 			(NVIC_ISER1 |= 1<<(USART2_IRQ-32))
+#define NVIC_IRQ39_USART3_Enable 			(NVIC_ISER1 |= 1<<(USART3_IRQ-32))
+
 #define NVIC_IRQ6_EXTI0_Disable 			(NVIC_ICER0 |= 1<<6)
 #define NVIC_IRQ7_EXTI1_Disable 			(NVIC_ICER0 |= 1<<7)
 #define NVIC_IRQ8_EXTI2_Disable 			(NVIC_ICER0 |= 1<<8)
@@ -202,6 +246,11 @@ typedef struct {
 #define NVIC_IRQ10_EXTI4_Disable 			(NVIC_ICER0 |= 1<<10)
 #define NVIC_IRQ23_EXTI5_9_Disable 			(NVIC_ICER0 |= 1<<23)
 #define NVIC_IRQ40_EXTI10_15_Disable 		(NVIC_ICER1 |= 1<<8)
+
+#define NVIC_IRQ37_USART1_Disable 			(NVIC_ICER1 |= 1<<(USART1_IRQ-32))
+#define NVIC_IRQ38_USART2_Disable 			(NVIC_ICER1 |= 1<<(USART2_IRQ-32))
+#define NVIC_IRQ39_USART3_Disable 			(NVIC_ICER1 |= 1<<(USART3_IRQ-32))
+
 
 
 
