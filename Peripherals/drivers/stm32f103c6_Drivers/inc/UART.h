@@ -108,19 +108,15 @@ typedef struct
 #define DIV_Fraction(_PCLK_,_BAUD_)            	 (uint32_t) (( USARTDIV_Mul100(_PCLK_,_BAUD_)  - Mantissa_MUL100(_PCLK_,_BAUD_)) * 16 )
 #define USART_BRR_Register(_PCLK_,_BAUD_)        ( (Mantissa(_PCLK_,_BAUD_)) <<4 ) | ( (DIV_Fraction(_PCLK_,_BAUD_)) & 0xF)
 
-typedef enum
-{
-	Enable ,
-	Disable
-}Polling_Mechanism_t;
+
 //               				APIS
 
 void MCAL_USART_Init(USART_Typedef* USARTX , USART_Conig_t* USART_Config);
 void MCAL_USART_DeInit(USART_Typedef* USARTX );
 void MCAL_USART_GPIO_Set_Pins(USART_Typedef* USARTX );
-void MCAL_USART_SendData(USART_Typedef* USARTX , uint16_t *PtxBuffer ,Polling_Mechanism_t PollingEn );
-void MCAL_USART_RecieveData(USART_Typedef* USARTX , uint16_t *PtxBuffer ,Polling_Mechanism_t PollingEn );
-void MCAL_USART_Send_String(USART_Typedef* USARTX , uint8_t *PtxBuffer ,Polling_Mechanism_t PollingEn);
+void MCAL_USART_SendData(USART_Typedef* USARTX , uint16_t *PtxBuffer ,Polling_mechanism_t PollingEn );
+void MCAL_USART_RecieveData(USART_Typedef* USARTX , uint16_t *PtxBuffer ,Polling_mechanism_t PollingEn );
+void MCAL_USART_Send_String(USART_Typedef* USARTX , uint8_t *PtxBuffer ,Polling_mechanism_t PollingEn);
 
 
 #endif /* INC_UART_H_ */

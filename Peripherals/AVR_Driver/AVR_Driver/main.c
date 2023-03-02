@@ -4,54 +4,58 @@
  * Created: 1/29/2023 12:30:53 AM
  * Author : karim
  */ 
+#define F_CPU	1000000U
+#include "DIO.h"
+#include "SPI.h"
 
-#include "LCD.h"
-#include "USART.h"
- #include "string.h"
- Error_Status_t Compare_String(uint8_t* Buffer1 , uint8_t* Buffer2);
-int main(void)
+#define MASTER	
+//2#define SLAVE
+
+int main()
 {
-	uint8_t Buffer[30] ;
-	DIO_Write_Pin_Dir(PORT_D,GPIO_PIN_0,IN);
-	DIO_Write_Pin_Dir(PORT_D,GPIO_PIN_1,OUT);
-	LCD_Init();
-	USART_Init();
+	#ifdef MASTER
+	MCAL_SPI_Set_Pins_Master();
+	#endif
+
+	#ifdef SLAVE
+	MCAL_SPI_Set_Pins_SLAVE();
+	#endif
+		
+	DDRA = 0xFF ; 
+	MCAL_SPI_Init();
 	while(1)
 	{
-		USAERT_Recieve_STRING(Buffer);
-		LCD_Write_String(Buffer,0,0);
-		LCD_Clear_Screen();
+		#ifdef MASTER
+		uint8_t DataSend1 ; 
+		for (DataSend1 = 0 ; DataSend1<=7 ; DataSend1++)
+		{
+			_delay_ms(1000);
+			PORTA = MCAL_SPI_Send_Data((1<<DataSend1));
+		}
+		#endif
+		
+		#ifdef SLAVE
+		uint8_t DataSend2 ;
+		for (DataSend2= 0 ; DataSend2<=7 ; DataSend2++)
+		{
+			_delay_ms(1000);
+			PORTA = MCAL_SPI_Recieve_Data((1<<DataSend2));
+		}
+		#endif
+		
 	}
+	
+	return 0 ;  
 }
-// 	USAERT_Send_STRING((uint8_t*)"Enter 1 to LED ON Led1\r\n");
-// 	USAERT_Send_STRING((uint8_t*)"Enter 2 to LED ON Buzzer\r\n");
-// 	USAERT_Recieve_STRING(Buffer);
-// 	Error_Status_t Status =  Compare_String(Buffer,(uint8_t*)"LED ON") ;
-// 	 if (Status==NO_Error)
-// 	 {
-// 		 DIO_Write_Pin(PORT_D,GPIO_PIN_5,HIGH);
-// 	 }
-// 	 else
-// 	 {
-// 		 DIO_Write_Pin(PORT_D,GPIO_PIN_4,HIGH);
-// 	 }
-// 	return NO_Error ;		
-// }
-// Error_Status_t Compare_String(uint8_t* Buffer1 , uint8_t* Buffer2)
-// {
-// 	uint8_t i = 0 ; 
-// 	Error_Status_t Compare_Status = Error ; 
-// 	for (; Buffer1[i] != 0 && Buffer2[i] != 0 ; i++ )
-// 	{
-// 		if (*Buffer1 != *Buffer1)
-// 		{
-// 			break;
-// 		}
-// 	}
-// 	if (Buffer1[i] == Buffer2[i])
-// 	{
-// 		Compare_Status = NO_Error ; 
-// 	}
-// 	return Compare_Status ; 
-// }
-// 
+
+
+
+
+
+
+
+
+
+
+
+

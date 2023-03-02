@@ -7,4 +7,5 @@
 "stm32f103c6_Drivers/EXTI.o"
 "stm32f103c6_Drivers/GPIO.o"
 "stm32f103c6_Drivers/RCC.o"
+"stm32f103c6_Drivers/SPI.o"
 "stm32f103c6_Drivers/UART.o"

@@ -61,6 +61,7 @@
 #define AFIO_BASE					0x40010000UL
 #define EXTI_BASE					0x40010400UL
 #define USART1_BASE					0x40013800UL
+#define SPI1_BASE					0x40013000UL
 
 /******************************************************************************************
  *																																       *
@@ -70,6 +71,7 @@
 
 #define USART2_BASE					0x40004400UL
 #define USART3_BASE					0x40004800UL
+#define SPI2_BASE					0x40003800UL
 
 /****************************************************************************************
  *																																	  *
@@ -139,6 +141,22 @@ typedef struct {
 	volatile uint32_t	GTPR ;
 }USART_Typedef ;
 
+// Peripheral register : SPI
+
+typedef struct {
+	volatile uint32_t	CR1		;
+	volatile uint32_t	CR2 	;
+	volatile uint32_t	SR  	;
+	volatile uint32_t	DR  	;
+	volatile uint32_t	CRCPR	;
+	volatile uint32_t	RXCRCR 	;
+	volatile uint32_t	TXCRCR 	;
+	volatile uint32_t	I2SCFGR ;
+	volatile uint32_t	I2SPR 	;
+
+}SPI_Typedef ;
+
+
 //Peripheral Instants:
 
 #define GPIOA							((GPIO_Typedef *)GPIOA_BASE)
@@ -154,6 +172,9 @@ typedef struct {
 #define USART1							((USART_Typedef	*)USART1_BASE)
 #define USART2							((USART_Typedef	*)USART2_BASE)
 #define USART3							((USART_Typedef	*)USART3_BASE)
+
+#define SPI1							((SPI_Typedef*)SPI1_BASE)
+#define SPI2							((SPI_Typedef*)SPI2_BASE)
 
 
 /****************************************************************************************
@@ -178,6 +199,17 @@ typedef struct {
 #define RCC_USART1_Reset()			(RCC->APB2RSTR |= (1<<14)) ;
 #define RCC_USART2_Reset()			(RCC->APB1RSTR |= (1<<17)) ;
 #define RCC_USART3_Reset()			(RCC->APB1RSTR |= (1<<18)) ;
+
+// SPI Enable Clock
+
+#define RCC_SPI1_CLK_EN()			(RCC->APB2ENR |= (1<<12)) ;
+#define RCC_SPI2_CLK_EN()			(RCC->APB1ENR |= (1<<14)) ;
+
+// SPI Reset Clock
+
+#define RCC_SPI1_CLK_Reset()			(RCC->APB2RSTR |= (1<<12)) ;
+#define RCC_SPI2_CLK_Reset()			(RCC->APB1RSTR |= (1<<14)) ;
+
 
 // EXTI
 #define EXTI0						0
@@ -217,6 +249,9 @@ typedef struct {
 #define EXTI14_IRQ						40
 #define EXTI15_IRQ						40
 
+#define SPI1_IRQ						35
+#define SPI2_IRQ						36
+
 #define USART1_IRQ						37
 #define USART2_IRQ						38
 #define USART3_IRQ						39
@@ -239,6 +274,9 @@ typedef struct {
 #define NVIC_IRQ38_USART2_Enable 			(NVIC_ISER1 |= 1<<(USART2_IRQ-32))
 #define NVIC_IRQ39_USART3_Enable 			(NVIC_ISER1 |= 1<<(USART3_IRQ-32))
 
+#define NVIC_IRQ35_SPI1_Enable 				(NVIC_ISER1 |= 1<<(SPI1_IRQ-32))
+#define NVIC_IRQ36_SPI2_Enable 				(NVIC_ISER1 |= 1<<(SPI2_IRQ-32))
+
 #define NVIC_IRQ6_EXTI0_Disable 			(NVIC_ICER0 |= 1<<6)
 #define NVIC_IRQ7_EXTI1_Disable 			(NVIC_ICER0 |= 1<<7)
 #define NVIC_IRQ8_EXTI2_Disable 			(NVIC_ICER0 |= 1<<8)
@@ -252,7 +290,12 @@ typedef struct {
 #define NVIC_IRQ39_USART3_Disable 			(NVIC_ICER1 |= 1<<(USART3_IRQ-32))
 
 
+#define NVIC_IRQ35_SPI1_Disable 			(NVIC_ICER1 |= 1<<(SPI1_IRQ-32))
+#define NVIC_IRQ36_SPI2_Disable 			(NVIC_ICER1 |= 1<<(SPI2_IRQ-32))
 
 
-
+typedef enum {
+	Enable ,
+	Disable
+}Polling_mechanism_t;
 #endif /* INC_STM32F103XX_H_ */

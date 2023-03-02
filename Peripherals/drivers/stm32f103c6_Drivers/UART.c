@@ -133,7 +133,7 @@ void MCAL_USART_DeInit(USART_Typedef* USARTX )
  *  						When receiving with the parity enabled, the value read in the MSB bit is the received parity
  *
  ********************************************************************************************************************/
-void MCAL_USART_SendData(USART_Typedef* USARTX , uint16_t *PtxBuffer ,Polling_Mechanism_t PollingEn )
+void MCAL_USART_SendData(USART_Typedef* USARTX , uint16_t *PtxBuffer ,Polling_mechanism_t PollingEn )
 {
 	//wait until TXE is set
 	if(PollingEn==Enable)
@@ -150,7 +150,7 @@ void MCAL_USART_SendData(USART_Typedef* USARTX , uint16_t *PtxBuffer ,Polling_Me
 	}
 
 }
-void MCAL_USART_Send_String(USART_Typedef* USARTX , uint8_t *PtxBuffer ,Polling_Mechanism_t PollingEn)
+void MCAL_USART_Send_String(USART_Typedef* USARTX , uint8_t *PtxBuffer ,Polling_mechanism_t PollingEn)
 {
 	uint8_t Loc_Count = 0 ;
 	//wait until TXE is set
@@ -171,7 +171,7 @@ void MCAL_USART_Send_String(USART_Typedef* USARTX , uint8_t *PtxBuffer ,Polling_
  * 		@retval           -none
  * 		Note              -none																										*
  ********************************************************************************************************************/
-void MCAL_USART_RecieveData(USART_Typedef* USARTX , uint16_t *PtxBuffer ,Polling_Mechanism_t PollingEn )
+void MCAL_USART_RecieveData(USART_Typedef* USARTX , uint16_t *PtxBuffer ,Polling_mechanism_t PollingEn )
 {
 	//wait until RXNE is set
 	if (PollingEn == Enable)
