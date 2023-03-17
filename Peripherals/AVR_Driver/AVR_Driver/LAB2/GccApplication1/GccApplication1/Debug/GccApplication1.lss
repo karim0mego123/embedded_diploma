@@ -67,9 +67,9 @@ Disassembly of section .text:
   68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 0000006c <Execute>:
-#define SCK		7
-#define SS		4
 typedef unsigned char uint8_t ; 
+
+
 void Execute(uint8_t Data , uint8_t Cmd)  
 {
 	PORTB &=~ (1<<SS) ; 
@@ -126,7 +126,7 @@ int main(void)
 int main(void)
 {
     uint8_t Loc_Counter = 0 , Index_Dispaly = 1 ; 
-  ae:	60 e0       	ldi	r22, 0x00	; 0
+  ae:	80 e0       	ldi	r24, 0x00	; 0
 	Execute(0x07,0x0B) ;
 	Execute(0x0F,0x0A) ;
 	Execute(0x01,0x0C) ;
@@ -136,10 +136,10 @@ int main(void)
   b0:	c1 e0       	ldi	r28, 0x01	; 1
   b2:	07 c0       	rjmp	.+14     	; 0xc2 <main+0x3c>
 		{
-			Execute(Index_Dispaly,Loc_Counter++) ; 
+			Execute(Loc_Counter++,Index_Dispaly) ; 
   b4:	d1 e0       	ldi	r29, 0x01	; 1
-  b6:	d6 0f       	add	r29, r22
-  b8:	8c 2f       	mov	r24, r28
+  b6:	d8 0f       	add	r29, r24
+  b8:	6c 2f       	mov	r22, r28
   ba:	0e 94 36 00 	call	0x6c	; 0x6c <Execute>
 	Execute(0x07,0x0B) ;
 	Execute(0x0F,0x0A) ;
@@ -149,8 +149,8 @@ int main(void)
 		for (Index_Dispaly = 1 ; Index_Dispaly<9 ; Index_Dispaly++)
   be:	cf 5f       	subi	r28, 0xFF	; 255
 		{
-			Execute(Index_Dispaly,Loc_Counter++) ; 
-  c0:	6d 2f       	mov	r22, r29
+			Execute(Loc_Counter++,Index_Dispaly) ; 
+  c0:	8d 2f       	mov	r24, r29
 	Execute(0x07,0x0B) ;
 	Execute(0x0F,0x0A) ;
 	Execute(0x01,0x0C) ;
@@ -166,10 +166,10 @@ int main(void)
 
 	__builtin_avr_delay_cycles(__ticks_dc);
   c6:	2f e3       	ldi	r18, 0x3F	; 63
-  c8:	8d e0       	ldi	r24, 0x0D	; 13
+  c8:	3d e0       	ldi	r19, 0x0D	; 13
   ca:	93 e0       	ldi	r25, 0x03	; 3
   cc:	21 50       	subi	r18, 0x01	; 1
-  ce:	80 40       	sbci	r24, 0x00	; 0
+  ce:	30 40       	sbci	r19, 0x00	; 0
   d0:	90 40       	sbci	r25, 0x00	; 0
   d2:	e1 f7       	brne	.-8      	; 0xcc <main+0x46>
   d4:	00 c0       	rjmp	.+0      	; 0xd6 <main+0x50>

@@ -8,6 +8,10 @@ HAL\KeyPad_Driver\Keypad.c
 
 HAL\LCD_Driver\LCD.c
 
+HAL\LED\LED.c
+
+HAL\Switch\Switch.c
+
 main.c
 
 MCAL\DIO_Driver\DIO.c

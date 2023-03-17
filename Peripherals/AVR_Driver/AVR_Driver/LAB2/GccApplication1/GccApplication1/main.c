@@ -13,6 +13,8 @@
 #define SCK		7
 #define SS		4
 typedef unsigned char uint8_t ; 
+
+
 void Execute(uint8_t Data , uint8_t Cmd)  
 {
 	PORTB &=~ (1<<SS) ; 
@@ -37,7 +39,7 @@ int main(void)
 	{
 		for (Index_Dispaly = 1 ; Index_Dispaly<9 ; Index_Dispaly++)
 		{
-			Execute(Index_Dispaly,Loc_Counter++) ; 
+			Execute(Loc_Counter++,Index_Dispaly) ; 
 		}
 			_delay_ms(1000) ;
 	}

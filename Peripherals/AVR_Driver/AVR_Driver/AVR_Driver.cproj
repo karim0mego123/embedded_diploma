@@ -119,6 +119,8 @@
       <Value>../MCAL/EXTI_Driver</Value>
       <Value>../MCAL/USART_Driver</Value>
       <Value>../MCAL/SPI_Driver</Value>
+      <Value>../HAL/Switch</Value>
+      <Value>../HAL/LED</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -157,6 +159,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\LCD_Driver\LCD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LED\LED.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LED\LED.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Switch\Switch.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Switch\Switch_init.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
@@ -213,6 +227,8 @@
     <Folder Include="HAL\LCD_Driver" />
     <Folder Include="HAL\KeyPad_Driver" />
     <Folder Include="HAL\7 segment" />
+    <Folder Include="HAL\LED" />
+    <Folder Include="HAL\Switch" />
     <Folder Include="MCAL" />
     <Folder Include="MCAL\EXTI_Driver" />
     <Folder Include="MCAL\DIO_Driver" />

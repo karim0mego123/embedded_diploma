@@ -38,6 +38,12 @@ typedef enum {
 	GPIO_PIN_6 ,
 	GPIO_PIN_7
 }GPIO_PIN_t;
+
+typedef enum {
+	 FLOATING ,  
+	 PULL_UP  
+}PIN_Status_n ;
+
 #define GPIO_PIN_0							0
 #define GPIO_PIN_1							1
 #define GPIO_PIN_2							2
