@@ -86,7 +86,7 @@ void MCAL_GPIO_INIT(GPIO_Typedef * GPIOX,GPIO_PinCongif_t* pinconfig)
 	volatile uint32_t* Loc_Config_Regester = NULL ;
 	uint8_t	 Loc_Pin_Congif	=	0 ;
 	Loc_Config_Regester = (pinconfig->GPIO_PinNumber<GPIO_PIN_8)? 	&GPIOX->CRL	:	&GPIOX->CRH 	 ;
-	*(Loc_Config_Regester) &=~(0x0f<<(Get_CRLH_Position(pinconfig->GPIO_PinNumber)));
+	*(Loc_Config_Regester) &=~(0xf<<(Get_CRLH_Position(pinconfig->GPIO_PinNumber)));
 	if (pinconfig->GPIO_MODE==GPIO_Mode_OUTPUT_OD || pinconfig->GPIO_MODE==GPIO_Mode_OUTPUT_PP||\
 			pinconfig->GPIO_MODE==GPIO_Mode_OUTPUT_AF_OD ||pinconfig->GPIO_MODE==GPIO_Mode_OUTPUT_AF_PP)
 	{
@@ -100,7 +100,7 @@ void MCAL_GPIO_INIT(GPIO_Typedef * GPIOX,GPIO_PinCongif_t* pinconfig)
 		}
 		else if (pinconfig->GPIO_MODE==GPIO_Mode_AF_INPUT)
 		{
-			Loc_Pin_Congif = (((GPIO_Mode_INPUT_FLO<<2) |0x0)&0x0f) ;
+			Loc_Pin_Congif = GPIO_Mode_AF_INPUT ;
 		}
 		else
 		{

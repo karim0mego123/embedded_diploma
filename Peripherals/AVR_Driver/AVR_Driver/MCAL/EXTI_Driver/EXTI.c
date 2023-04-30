@@ -1,4 +1,4 @@
-/*
+  /*
  * EXTI.c
  *
  * Created: 1/31/2023 5:40:27 PM
@@ -9,9 +9,9 @@
 
 /****************************Pointer to functions to be assigned to ISR*********************************/
 
-static void (*INT0_Fptr) (void)=NULLPTR;
-static void (*INT1_Fptr) (void)=NULLPTR;
-static void (*INT2_Fptr) (void)=NULLPTR;
+static void (*INT0_Fptr) (void)=NULL;
+static void (*INT1_Fptr) (void)=NULL;
+static void (*INT2_Fptr) (void)=NULL;
 
 /************************************Call back functions*********************************************/
 void EXI_SetCallBack(EXTI_Interrupt_t Interrupt,void(*LocalPtr)(void))
@@ -124,21 +124,21 @@ void EXTI_TriggerEdge(EXTI_Interrupt_t interrupt , Trigger_Edge_t Edge)
 /*******************************ISR********************************/
 ISR(INT0_vect)
 {
-	if (INT0_Fptr!=NULLPTR)
+	if (INT0_Fptr!=NULL)
 	{
 		INT0_Fptr();
 	}
 }
 ISR(INT1_vect)
 {
-	if (INT1_Fptr!=NULLPTR)
+	if (INT1_Fptr!=NULL)
 	{
 		INT1_Fptr();
 	}
 }
 ISR(INT2_vect)
 {
-	if (INT2_Fptr!=NULLPTR)
+	if (INT2_Fptr!=NULL)
 	{
 		INT2_Fptr();
 	}

@@ -1,4 +1,4 @@
-/*
+ /*
  * EXTI.h
  *
  * Created: 1/31/2023 5:40:41 PM
@@ -29,5 +29,5 @@ typedef enum{
 void EXTI_Enable(EXTI_Interrupt_t interrupt);
 void EXTI_Disable(EXTI_Interrupt_t interrupt);
 void EXTI_TriggerEdge(EXTI_Interrupt_t interrupt , Trigger_Edge_t Edge);
-
+void EXI_SetCallBack(EXTI_Interrupt_t Interrupt,void(*LocalPtr)(void));
 #endif /* EXTI_H_ */

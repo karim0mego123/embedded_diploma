@@ -56,11 +56,11 @@ void MCAL_USART_Init(USART_Typedef* USARTX , USART_Conig_t* USART_Config)
 	//PCLK1 for USART2 ,3
 	if(USARTX == USART1)
 	{
-		PCLK = MCAL_RCC_GetPCLK2();
+		PCLK = MCAL_RCC_GetPCLK2Freq();
 	}
 	else
 	{
-		PCLK = MCAL_RCC_GetPCLK1();
+		PCLK = MCAL_RCC_GetPCLK1Freq();
 	}
 	BRR = USART_BRR_Register(PCLK,USART_Config->BaudRate);
 	USARTX->BRR = BRR ;
@@ -233,8 +233,8 @@ void MCAL_USART_GPIO_Set_Pins(USART_Typedef* USARTX )
 		MCAL_GPIO_INIT(GPIOA, &pincfg) ;
 
 		//PA10 RX
-		pincfg.GPIO_PinNumber = GPIO_PIN_10 ;
-		pincfg.GPIO_MODE = GPIO_Mode_AF_INPUT;
+		pincfg.GPIO_PinNumber = GPIO_PIN_10   ;
+		pincfg.GPIO_MODE = GPIO_Mode_AF_INPUT ;
 		MCAL_GPIO_INIT(GPIOA, &pincfg) ;
 
 		//PA11 CTS

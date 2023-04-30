@@ -10,13 +10,19 @@ HAL\LCD_Driver\LCD.c
 
 HAL\LED\LED.c
 
+HAL\LM32_Sensor\LM35_Sensor.c
+
 HAL\Switch\Switch.c
 
 main.c
 
+MCAL\ADC_Driver\ADC_Prog.c
+
 MCAL\DIO_Driver\DIO.c
 
 MCAL\EXTI_Driver\EXTI.c
+
+MCAL\GIE_Driver\GIE.c
 
 MCAL\SPI_Driver\SPI.c
 

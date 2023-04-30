@@ -185,13 +185,13 @@ void DIO_Write_Port( GPIO_PORT_t PortNumber , uint8_t value  )
 		PORTA = value ;
 		break ;
 		case PORT_B :
-		PORTA = value ;
+		PORTB = value ;
 		break ;
 		case PORT_C :
-		PORTA = value ;
+		PORTC = value ;
 		break ;
 		case PORT_D :
-		PORTA = value ;
+		PORTD = value ;
 		break ;
 		default:
 		// Error Handler

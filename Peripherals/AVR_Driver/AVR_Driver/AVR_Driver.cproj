@@ -121,6 +121,10 @@
       <Value>../MCAL/SPI_Driver</Value>
       <Value>../HAL/Switch</Value>
       <Value>../HAL/LED</Value>
+      <Value>../MCAL/I2C_Driver</Value>
+      <Value>../MCAL/ADC_Driver</Value>
+      <Value>../MCAL/GIE_Driver</Value>
+      <Value>../HAL/LM32_Sensor</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -167,6 +171,12 @@
     <Compile Include="HAL\LED\LED.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\LM32_Sensor\LM35_Sensor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LM32_Sensor\LM35_Sensor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\Switch\Switch.c">
       <SubType>compile</SubType>
     </Compile>
@@ -174,6 +184,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC_Driver\ADC_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC_Driver\ADC_INT.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC_Driver\ADC_Privite.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC_Driver\ADC_Prog.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO_Driver\DIO.c">
@@ -186,6 +208,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\EXTI_Driver\EXTI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GIE_Driver\GIE.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GIE_Driver\GIE.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\SPI_Driver\SPI.c">
@@ -228,10 +256,13 @@
     <Folder Include="HAL\KeyPad_Driver" />
     <Folder Include="HAL\7 segment" />
     <Folder Include="HAL\LED" />
+    <Folder Include="HAL\LM32_Sensor" />
     <Folder Include="HAL\Switch" />
     <Folder Include="MCAL" />
     <Folder Include="MCAL\EXTI_Driver" />
     <Folder Include="MCAL\DIO_Driver" />
+    <Folder Include="MCAL\ADC_Driver" />
+    <Folder Include="MCAL\GIE_Driver" />
     <Folder Include="MCAL\SPI_Driver" />
     <Folder Include="MCAL\USART_Driver" />
     <Folder Include="Utilities" />

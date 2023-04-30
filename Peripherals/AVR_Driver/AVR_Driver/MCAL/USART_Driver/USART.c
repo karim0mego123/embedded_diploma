@@ -60,7 +60,7 @@ Error_Status_t USART_Send_Char(uint8_t Data )
 Error_Status_t USART_Recieve_Char( uint8_t* Data )
 {
 	Error_Status_t Loc_RX_Status = NO_Error ;
-	if(Data==NULLPTR)
+	if(Data==NULL)
 	{
 		Loc_RX_Status = Error ; 
 	}
@@ -74,7 +74,7 @@ Error_Status_t USART_Recieve_Char( uint8_t* Data )
 Error_Status_t USAERT_Send_STRING(uint8_t* String)
 {
 	Error_Status_t Loc_TX_String_Status = NO_Error ;
-	if(String==NULLPTR)
+	if(String==NULL)
 	{
 		Loc_TX_String_Status = Error ; 
 	}
@@ -91,7 +91,7 @@ Error_Status_t USAERT_Send_STRING(uint8_t* String)
 Error_Status_t USAERT_Recieve_STRING(uint8_t* String)
 {
 	Error_Status_t Loc_RX_STRING_Status = NO_Error ;
-	if(String==NULLPTR)
+	if(String==NULL)
 	{
 		Loc_RX_STRING_Status = Error ; 
 	}

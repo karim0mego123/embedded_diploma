@@ -52,14 +52,14 @@ typedef struct {
 //  7			ALternate function output open_drain
 // 8 			Alternate function Input
 
-#define GPIO_Mode_Analog							0x00000000U 					// 	Analog Mode
+#define GPIO_Mode_Analog						0x00000000U 					// 	Analog Mode
 #define GPIO_Mode_INPUT_FLO						0x00000001U 					// 	FLoating input
 #define GPIO_Mode_INPUT_PU						0x00000002U 					// 	input pull up
 #define GPIO_Mode_INPUT_PD						0x00000003U 					// 	input pull down
-#define GPIO_Mode_OUTPUT_PP					0x00000004U 					// 	output push pull
-#define GPIO_Mode_OUTPUT_OD					0x00000005U 					// 	 output open_drain
-#define GPIO_Mode_OUTPUT_AF_PP				0x00000006U 					// 	alternate output push pull
-#define GPIO_Mode_OUTPUT_AF_OD			0x00000007U 					// 	alternate output open_drain
+#define GPIO_Mode_OUTPUT_PP						0x00000004U 					// 	output push pull
+#define GPIO_Mode_OUTPUT_OD						0x00000005U 					// 	 output open_drain
+#define GPIO_Mode_OUTPUT_AF_PP					0x00000006U 					// 	alternate output push pull
+#define GPIO_Mode_OUTPUT_AF_OD					0x00000007U 					// 	alternate output open_drain
 #define GPIO_Mode_AF_INPUT						0x00000008U 					// 	alternate function input
 
 #define GPIO_SPEED_10M				0x00000001U 		//    outputmode , max speed 10 MHZ  .

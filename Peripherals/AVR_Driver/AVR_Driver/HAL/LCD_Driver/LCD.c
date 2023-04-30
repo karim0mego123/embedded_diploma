@@ -29,9 +29,9 @@ void LCD_Clear_Screen ()
  ********************************************************************************************************************/
 void LCD_Enable ()
 {
-	DIO_Write_Pin(PORT_B,EN_SWITCH,HIGH);
+	DIO_Write_Pin(PORT_A,EN_SWITCH,HIGH);
 	_delay_ms(50);
-	DIO_Write_Pin(PORT_B,EN_SWITCH,LOW);
+	DIO_Write_Pin(PORT_A,EN_SWITCH,LOW);
 
 }
 
@@ -45,9 +45,25 @@ void LCD_Enable ()
 void LCD_Init()
 {
 	_delay_ms(20) ;
-	LCD_CTRL_DIR = 0x07 ; 
-	LCD_CTRL &= ~(0x07);
+	
+	SET_BIT(LCD_CTRL_DIR,RS_SWITCH);
+	SET_BIT(LCD_CTRL_DIR,RW_SWITCH);
+	SET_BIT(LCD_CTRL_DIR,EN_SWITCH);
+
+	CLEAR_BIT(LCD_CTRL,RS_SWITCH);
+	CLEAR_BIT(LCD_CTRL,RW_SWITCH);
+	CLEAR_BIT(LCD_CTRL,EN_SWITCH);
+
+#ifdef EIGHT_BIT_MODE
 	SET_REG(LCD_DATA_DIR);
+#endif 
+
+#ifdef FOUR_BIT_MODE
+	SET_BIT(LCD_DATA_DIR,4);
+	SET_BIT(LCD_DATA_DIR,5);
+	SET_BIT(LCD_DATA_DIR,6);
+	SET_BIT(LCD_DATA_DIR,7);
+#endif 
 	_delay_ms(15);
 	LCD_Clear_Screen();
 	
@@ -95,17 +111,19 @@ void LCD_Init()
  ********************************************************************************************************************/
 void LCD_Wirte_Cmd (uint8_t Cmd)
 {
-	DIO_Write_Pin(PORT_B,RS_SWITCH,LOW);
-	DIO_Write_Pin(PORT_B,RW_SWITCH,LOW);
+	DIO_Write_Pin(PORT_A,RS_SWITCH,LOW);
+	DIO_Write_Pin(PORT_A,RW_SWITCH,LOW);
 	
 	#ifdef FOUR_BIT_MODE
 	
-	LCD_DATA = (LCD_DATA&0x0f) | (Cmd&0xF0);  
+
+	LCD_DATA = (LCD_DATA&0x0F) | (Cmd&0xF0);  
 	LCD_Enable ();
 	_delay_ms(1);
 	if (Init_Is_Finshed)
 	{
-		LCD_DATA = (((LCD_DATA&0xF0) | (Cmd&0x0F))<<4);
+		
+		LCD_DATA = (((LCD_DATA&0x0F) | (Cmd&0x0F))<<4);
 		LCD_Enable ();
 	}
 	#endif
@@ -127,13 +145,13 @@ void LCD_Wirte_Cmd (uint8_t Cmd)
 void Lcd_Write_Char(uint8_t Char)
 {
 	
-	DIO_Write_Pin(PORT_B,RS_SWITCH,HIGH);
-	DIO_Write_Pin(PORT_B,RW_SWITCH,LOW);
+	DIO_Write_Pin(PORT_A,RS_SWITCH,HIGH);
+	DIO_Write_Pin(PORT_A,RW_SWITCH,LOW);
 #ifdef FOUR_BIT_MODE
 	LCD_DATA = (LCD_DATA&0x0F) | (Char&0xF0);
 	LCD_Enable ();
 	_delay_ms(1);
-	LCD_DATA = (((LCD_DATA&0xF0) | (Char&0x0F))<<4);
+	LCD_DATA = (((LCD_DATA&0x0F) | (Char&0x0F)<<4));
 	LCD_Enable ();
 #endif
 	
@@ -230,4 +248,24 @@ void LCD_Display_Customer_Char(uint8_t CGRAM_Index , uint8_t ROW , uint8_t Col )
 {
 	LCD_GO_TO_INDEX(ROW,Col);
 	Lcd_Write_Char(CGRAM_Index);
+}
+void LCD_Write_Number(uint16_t Number) 
+{
+	uint8_t Rem[5] = {0} , count = 0  ;
+	if (Number<10)
+	{
+		Lcd_Write_Char(Number+48);
+	}
+	else
+	{
+		while(Number>0)
+		{
+			Rem[count++] = Number % 10 ;
+			Number /= 10 ; 
+		}
+	}
+	for (int i = count-1 ; i >= 0 ; i-- )
+	{
+		Lcd_Write_Char(Rem[i]+48);		
+	}
 }

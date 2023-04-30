@@ -5,42 +5,29 @@
  * Author : karim
  */ 
 #include "DIO.h"
-#include "Switch_init.h"
-#include "LED.h"
+#include "LCD.h"
+#include "EXTI.h"
+#include "GIE.h"
+#include "LM35_Sensor.h"
 
-#define SW_Num		2
 
 int main()
 {	
-	SW_t Switch[SW_Num] = { {PORT_A,GPIO_PIN_0,PULL_UP} ,
-							{PORT_A,GPIO_PIN_1,PULL_UP}  } ;
-
-	LED_t LED[2] = {	{PORT_B,GPIO_PIN_0,Source_Current} ,
-						{PORT_B,GPIO_PIN_1,Sink_Current} } ;
+	uint16_t Loc_Read = 0 ;
+	uint8_t Channel_id = 0 ; 
 	
-	LED_Init_State(&LED[0],OFF);
-	LED_Init_State(&LED[1],OFF);
-					  
-	Switch_Init(Switch,SW_Num);
+	LCD_Init();
+	LM35_Init(Channel_id);
+	
 	while(1)
 	{
-		if (Switch_Get_State(&Switch[0])==0)
-		{
-			LED_ON(&LED[0]);
-			Debouncing(PINA,GPIO_PIN_0);
-			LED_OFF(&LED[0]);
-		}
-		if (Switch_Get_State(&Switch[1])==0)
-		{
-			LED_ON(&LED[1]);		
-			Debouncing(PINA,GPIO_PIN_1);
-			LED_OFF(&LED[1]);
-		}
+		LM35_Read(&Loc_Read);
+		LCD_Write_Number(Loc_Read);
+		_delay_ms(1000);
+		LCD_Clear_Screen();
 	}
 	return 0 ; 
 }
-
-
 
 
 
