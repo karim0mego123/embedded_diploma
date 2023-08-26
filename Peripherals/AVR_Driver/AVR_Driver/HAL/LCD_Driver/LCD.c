@@ -29,9 +29,9 @@ void LCD_Clear_Screen ()
  ********************************************************************************************************************/
 void LCD_Enable ()
 {
-	DIO_Write_Pin(PORT_A,EN_SWITCH,HIGH);
+	DIO_Write_Pin(PORT_B,EN_SWITCH,HIGH);
 	_delay_ms(50);
-	DIO_Write_Pin(PORT_A,EN_SWITCH,LOW);
+	DIO_Write_Pin(PORT_B,EN_SWITCH,LOW);
 
 }
 
@@ -111,8 +111,8 @@ void LCD_Init()
  ********************************************************************************************************************/
 void LCD_Wirte_Cmd (uint8_t Cmd)
 {
-	DIO_Write_Pin(PORT_A,RS_SWITCH,LOW);
-	DIO_Write_Pin(PORT_A,RW_SWITCH,LOW);
+	DIO_Write_Pin(PORT_B,RS_SWITCH,LOW);
+	DIO_Write_Pin(PORT_B,RW_SWITCH,LOW);
 	
 	#ifdef FOUR_BIT_MODE
 	
@@ -145,8 +145,8 @@ void LCD_Wirte_Cmd (uint8_t Cmd)
 void Lcd_Write_Char(uint8_t Char)
 {
 	
-	DIO_Write_Pin(PORT_A,RS_SWITCH,HIGH);
-	DIO_Write_Pin(PORT_A,RW_SWITCH,LOW);
+	DIO_Write_Pin(PORT_B,RS_SWITCH,HIGH);
+	DIO_Write_Pin(PORT_B,RW_SWITCH,LOW);
 #ifdef FOUR_BIT_MODE
 	LCD_DATA = (LCD_DATA&0x0F) | (Char&0xF0);
 	LCD_Enable ();

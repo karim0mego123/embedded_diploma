@@ -107,15 +107,23 @@
 #define INT1_vect		__vector_2
 #define INT2_vect		__vector_3
 
-#define TIMSK   *(volatile uint8_t *)(0x39)
-#define TOIE0   0
-#define OCIE0   1
-#define TOIE2   6
-#define OCIE2   7
-#define TOIE1   2
-#define OCIE1B  3
-#define OCIE1A  4
-#define TICIE1  5
+
+/************************************************************************************************/
+/* Timer 0 */
+#define TCNT0   (*(volatile unsigned char*)0x52)
+#define TCCR0   (*(volatile unsigned char*)0x53)
+#define TWCR    (*(volatile unsigned char*)0x56)
+#define SPMCR   (*(volatile unsigned char*)0x57)
+#define TIFR    (*(volatile unsigned char*)0x58)
+#define TIMSK   (*(volatile unsigned char*)0x59)
+
+
+
+
+#define OCR0    (*(volatile unsigned char*)0x5C)
+/****************************************************************************************************/
+#define TIMER0_OVF_vect			__vector_11
+
 
 /************************************************************************/
 /*								USART		                             */
@@ -155,7 +163,7 @@
 #define UBRRL	*(volatile uint8_t *)(0x29)
 #define UBRRH	*(volatile uint8_t *)(0x40)
 
-#define MYUBRR(BAUD)	            ((unsigned int)((FSOC/Speed_Mode)/(16*BAUD)-1))
+#define MYUBRR(BAUD)	            ((unsigned int)((FSOC/Speed_Mode)/(16UL*BAUD)-1))
 
 /************************************************************************/
 /*							EXTI_Interrupt                              */

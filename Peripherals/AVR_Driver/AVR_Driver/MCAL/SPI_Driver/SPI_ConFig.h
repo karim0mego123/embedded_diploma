@@ -26,7 +26,7 @@
 
 #define MASTER_MODE     0
 #define SLAVE_MODE      1
-#define SPI_MODE	MASTER_MODE
+#define SPI_MODE	SLAVE_MODE
 
 /*When this bit is written logic one the SPI speed (SCK Frequency) will be doubled when
   the SPI is in Master mode
@@ -34,6 +34,6 @@
 #define NORMAL_SPEED      0
 #define DOUBLE_SPEED      1
 
-#define SPEED_MODE      NORMAL_SPEED
+#define SPEED_MODE      DOUBLE_SPEED
 
 #endif /* SPI_CONFIG_H_ */

@@ -10,7 +10,7 @@ HAL\LCD_Driver\LCD.c
 
 HAL\LED\LED.c
 
-HAL\LM32_Sensor\LM35_Sensor.c
+HAL\LM35_Driver\LM35_Sensor.c
 
 HAL\Switch\Switch.c
 
@@ -25,6 +25,8 @@ MCAL\EXTI_Driver\EXTI.c
 MCAL\GIE_Driver\GIE.c
 
 MCAL\SPI_Driver\SPI.c
+
+MCAL\Timer_Driver\Timer.c
 
 MCAL\USART_Driver\USART.c
 
